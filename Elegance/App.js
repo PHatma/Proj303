@@ -30,10 +30,11 @@ const styles = StyleSheet.create({
 // import Payment from "./pages/Payment";
 // import StoredItems from "./pages/StoredItems";
 
-// //import SignIn from "./pages/SignIn";
+// import SignIn from "./pages/SignIn";
 // //import SignUp from "./pages/SignUp";
 
 // // function Menu() {
+  
 // //     return (
 // //         <Tab.Navigator>
 // //             <Tab.Screen name="home" component={home}/>
