@@ -39,9 +39,10 @@ export default function Home({navigation}) {
                   uri: `${itemData.item.url}`,
               }}
           />
-
-          <Text>{itemData.item.name}</Text>
-          <Text>{itemData.item.price}</Text>
+        <View style={styles.textStyleContainer}>
+           <Text style={styles.textStyle}>{itemData.item.name}</Text>
+          <Text style={styles.textStyle}>{itemData.item.price}</Text>
+          </View>
           <View>
           <Button title="Buy"
             color={`#8a2be2`}
@@ -64,6 +65,12 @@ const styles = StyleSheet.create({
 container: {
    flex: 1,
    backgroundColor :`#000000`,
+},
+textStyle:{
+  fontSize:18,
+  color:'white',
+  fontWeight:'bold',
+  textAlign: 'center',
 },
 });
 

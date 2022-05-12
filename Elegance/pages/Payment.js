@@ -7,17 +7,26 @@ import { ScrollView } from "react-native-web";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 export default function Payment({navigation}) {
-  
+  const [clothes, setClothes] = useState([]);
+  const [id, setId] = useState('');
   const getPaymentList = async () => {
     const c = await getClothes();
     setClothes(c);
     console.log("clothes", c);
   };
-
+ // React.useEffect(() => {
+  //   getClotheId().then((id) => {
+  //       console.log(id);
+  //       getClotheById(id).then((user)=>{
+  //          setClothes(user[0].clothes);
+  //           setId(user[0].id);
+  //       })
+  //   });
+  //   }, []);
   useEffect(() => {
     getPaymentList();
   }, []);
-  const [clothes, setClothes] = useState([]);
+  
   return (
     <View style={styles.container}>   
     <FlatList

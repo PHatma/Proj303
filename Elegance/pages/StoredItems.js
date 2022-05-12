@@ -1,12 +1,14 @@
-import { View,StyleSheet,ScrollView,FlatList, Button,Text ,Image,Dimensions} from "react-native";
+import { View,StyleSheet,FlatList, Button,Text ,Image,Dimensions} from "react-native";
 import { useEffect, useState } from "react";
-import {getClothes,subscribe
+import {getClotheId,getClothes,subscribe
 } from "../db/clothes/clothes";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
-const buy = false;
+
 export default function StoredItems({navigation}) {
+  const [clothes, setClothes] = useState([]);
+  const [id, setId] = useState('');
   const getFavList = async () => {
     const c = await getClothes();
     setClothes(c);
@@ -16,8 +18,15 @@ export default function StoredItems({navigation}) {
   useEffect(() => {
     getFavList();
   }, []);
-  const [clothes, setClothes] = useState([]);
-  const [name, setName] = useState([""]);
+  // React.useEffect(() => {
+  //   getClotheId().then((id) => {
+  //       console.log(id);
+  //       getClotheById(id).then((user)=>{
+  //          setClothes(user[0].clothes);
+  //           setId(user[0].id);
+  //       })
+  //   });
+  //   }, []);
   return (
     <View style={styles.container}>   
     <FlatList
@@ -39,8 +48,9 @@ export default function StoredItems({navigation}) {
                     uri: `${itemData.item.url}`,
                 }}
             />
-            <View style={styles.textStyleContainer}>
-           <Text style={styles.textStyle}>{itemData.item.name}</Text>
+            <View style={styles.btStyleContainer}>
+            <View>
+           <Text style={styles.textStyle} >{itemData.item.name}</Text>
           <Text style={styles.textStyle}>{itemData.item.price}</Text>
           </View>
           <View style={styles.buttonStyleContainer}>
@@ -57,6 +67,7 @@ export default function StoredItems({navigation}) {
              />
               </View>
               </View>
+              </View>
           </View>):(null)
         
       )}
@@ -68,7 +79,7 @@ export default function StoredItems({navigation}) {
 
 const styles = StyleSheet.create({
 container: {
-   flex: 1,
+  flex:1,
    backgroundColor :`#000000`,
 },
 textStyle:{
@@ -76,22 +87,26 @@ textStyle:{
   color:'white',
   fontWeight:'bold',
   textAlign: 'center',
+  margin :10,
 },
-// textStyleContainer: {
-//  },
 buttonStyleContainer: {
-  flex: 1,
   flexDirection: 'row',
   marginHorizontal: 2,
    marginTop: 1,
    justifyContent:"center",
    alignItems:"center"
  },
+ btStyleContainer: {
+  flexDirection: 'colmun',
+    justifyContent:"center",
+   alignItems:"center",
+   margin :10,
+ },
 buttonStyle: {
   marginHorizontal: 20,
   marginTop: 5,
-  width : 200,
-  height :20,
+   width : 100,
+   height :20,
 }
 });
 
