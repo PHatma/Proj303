@@ -1,14 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-
-const HomeForAdmain = () => {
-  return (
-    <View>
-      <Text>HomeForAdmain</Text>
-    </View>
-  )
+import { onAuthStateChanged } from "firebase/auth";
+import ClothesList from "../Components/Clothes/ClothesList";
+import { auth } from "../db/Config";
+import { useState, useEffect } from "react";
+import Clothes from "../Components/Clothes/ClothesList";
+export default function HomeForAdmain({navigation}) {
+  return ( 
+     <Clothes />
+  );
 }
 
-export default HomeForAdmain
 
-const styles = StyleSheet.create({})
