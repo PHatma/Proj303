@@ -1,39 +1,125 @@
 import {StatusBar} from 'expo-status-bar';
-import {Button, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {Button, ScrollView, StyleSheet, Image,ImageBackground ,View,TouchableOpacity, Text, TextInput} from 'react-native';
+import {useEffect, useState} from 'react';
+import {login, getUserToken} from "../firebase/Auth";
+import {AuthContext} from "./Utils";
+
+import * as React from "react";
+
+const routeName = 'SignIn';
+
+export {routeName};
+
 export default function SignIn({navigation}) {
 
+    const {signIn} = React.useContext(AuthContext);
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    function signInUser() {
+        login(email, password).then(() => {
+            signIn({email, password, token : getUserToken()});
+            goToHome();
+        }).catch((e) => {
+            alert(e.message);
+            console.log(e.message);
+        });
+    }
+   
+// const data = [     {text: "", iconScr: logo2},
+//         ];
+
+    function goToHome() {
+        navigation.navigate('Home');
+    }
+    
     return (
-        <ScrollView style={{padding:50}}>
+     
+       
+        <ScrollView style={{padding: 30,
+        backgroundColor :`#fdf5e6`, }}>
+      
 
-            <View style={{padding:30}}>
-                <Text>Username</Text>
+            <View  style={styles.inputView}>
+                 <TextInput
+                    style={styles.TextInput}
+                    placeholder=" Email "
+                    placeholderTextColor="#003f5c" onChangeText={setEmail} value={email}/>
             </View>
 
-            <View style={{padding:30}}>
-                <TextInput placeholder={"Enter your username"}></TextInput>
+            <View  style={styles.inputView}>
+  <TextInput
+    style={styles.TextInput}
+    placeholder=" Password "
+    placeholderTextColor="#003f5c"
+    secureTextEntry={true} onChangeText={setPassword}
+                           value={password}/>
             </View>
+           
+      <TouchableOpacity style={styles.loginBtn}
+      onPress={signInUser}>
+        <Text style={styles.loginText}>Sign In</Text>
+        
+      </TouchableOpacity>
+          
+      <TouchableOpacity style={styles.loginBtn}
+      onPress={() => navigation.navigate('SignUp')}>
+        <Text style={styles.loginText}>Create new account</Text>
+        
+      </TouchableOpacity>
 
-            <View style={{padding:30}}>
-                <Text>Password</Text>
-            </View>
-
-            <View style={{padding: 10}}>
-                <TextInput placeholder={"Enter your Password"}></TextInput>
-            </View>
-
-            <View style={{padding:30}}>
-                <Button title={"SignIn"} onPress={() => navigation.navigate('Login')}/>
-            </View>
-
-            <View style={{padding:30}}>
-                <Button title={"SignUp"} onPress={() => navigation.navigate('Create a new Account')}/>
-            </View>
-
-            <StatusBar style="auto"></StatusBar>
+    
         </ScrollView>
     );
 }
 
-const styles = StyleSheet.create(
-    {}
-);
+const styles = StyleSheet.create({
+
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        image :{
+            marginBottom: 40
+         
+          }
+       },
+     
+      
+         
+    
+       inputView: {
+        backgroundColor: "#da70d6",
+        borderRadius: 30,
+        width: "30%",
+        height: 50,
+         alignItems: "center",
+        justifyContent:"center",
+        marginBottom: 50,
+        marginHorizontal: "30%"
+       
+        
+      },
+      
+      TextInput: {
+        height: 50,
+        padding: 20,
+        alignItems: "center",
+        justifyContent:"center", 
+        marginHorizontal: "30%"  
+    },
+    
+     
+      loginBtn: {
+        width: "30%",
+        borderRadius: 50,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 40,
+        backgroundColor: "#800080",
+        marginHorizontal: "30%"
+      },
+});
