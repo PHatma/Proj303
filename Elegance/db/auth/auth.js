@@ -1,5 +1,5 @@
 import {app} from "../Config";
-import {onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, getAuth} from "auth/auth";
+import {onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, getAuth} from "firebase/auth";
 
 const authentication = getAuth(app);
 

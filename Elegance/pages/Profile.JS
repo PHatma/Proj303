@@ -1,10 +1,10 @@
 import {StatusBar} from 'expo-status-bar';
 import {Button, ScrollView, StyleSheet, View, Text, TextInput} from 'react-native';
-import {getUsers} from "../firebase/User";
-import {getUserUId} from "../firebase/Auth";
-import {getUserById} from "../firebase/User";
+import {getUsers} from "../db/User";
+import {getUserUId} from "../db/auth/auth";
+import {getUserById} from "../db/User";
 import {useState} from "react";
-import {isSignedIn, logout} from "../firebase/Auth";
+import {isSignedIn, logout} from "../db/auth/auth";
 import {AuthContext} from "./Utils";
 
 import * as React from "react";
