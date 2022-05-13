@@ -1,7 +1,6 @@
 import { View,StyleSheet,FlatList, Button,Text ,Image,Dimensions} from "react-native";
 import { useEffect, useState } from "react";
-import {getClothes,subscribe
-} from "../db/clothes/clothes";
+import {getClothes,subscribe} from "../db/clothes/clothes";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
