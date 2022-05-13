@@ -8,7 +8,7 @@ const height = Dimensions.get("window").height;
 
 export default function StoredItems({navigation}) {
   const [clothes, setClothes] = useState([]);
-  const [id, setId] = useState('');
+  //const [id, setId] = useState('');
   const getFavList = async () => {
     const c = await getClothes();
     setClothes(c);
@@ -34,7 +34,7 @@ export default function StoredItems({navigation}) {
       numColumns={2}
       keyExtractor={item => item.id}
       renderItem={(itemData) => (
-          itemData.item.fav?(<View style={{ margin: 10,flexDirection:"row",width:width }}> 
+        <View style={styles.container}>
             <Image
                 style={{
                   width: width / 2.09 -30,
@@ -68,8 +68,7 @@ export default function StoredItems({navigation}) {
               </View>
               </View>
               </View>
-          </View>):(null)
-        
+          </View>
       )}
     />
    

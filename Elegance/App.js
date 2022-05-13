@@ -20,7 +20,6 @@ export default function App() {
         <NavigationContainer  >
             <Tab.Navigator >
             <Tab.Screen name="Home" component={Home} />
-            <Tab.Screen name="HomeForAdmain" component={HomeForAdmain} />
              <Tab.Screen name="Payment" component={Payment} />
              <Tab.Screen name="StoredItems" component={StoredItems}/>
              {/* <Tab.Screen name="Profile" component={Profile}/> */}

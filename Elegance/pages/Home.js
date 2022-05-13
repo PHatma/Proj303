@@ -4,21 +4,18 @@ import {getClothes,subscribe} from "../db/clothes/clothes";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
-const buy = false;
 export default function Home({navigation}) {
   const getFavList = async () => {
     const c = await getClothes();
     setClothes(c);
     console.log("clothes", c);
   };
-
   useEffect(() => {
     getFavList();
   }, []);
   const [clothes, setClothes] = useState([]);
-  const [name, setName] = useState([""]);
   return (
-    <View style={styles.container}>   
+    <View style={styles.container}> 
     <FlatList
       data={clothes}
       numColumns={2}
@@ -45,7 +42,7 @@ export default function Home({navigation}) {
           <View>
           <Button title="Buy"
             color={`#8a2be2`}
-            onPress={() =>{buy == true}}
+            onPress={() =>{itemData.item.buy == true}}
              />
             <Button title="Love" 
             color={`#ff0000`}

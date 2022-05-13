@@ -1,4 +1,4 @@
-import { View, Text, Button, TextInput } from "react-native";
+import { View, Text, Button, TextInput ,ScrollView} from "react-native";
 import { useEffect, useState } from "react";
 import {getClothes,addClothe,deleteClothe,subscribe
 } from "../../db/clothes/clothes";
@@ -17,8 +17,7 @@ const ClothesList = () => {
 
   useEffect(() => {
     const unsubscribe = subscribe(({ change, snapshot }) => {
-      //   console.log("changes", change, snapshot, change.type);
-      // if (snapshot.metadata.hasPendingWrites) {
+      
       if (change.type === "added") {
         console.log("New clothe: ", change.doc.data());
         getClothesList();
@@ -65,6 +64,7 @@ const ClothesList = () => {
           }
         />
       </View>
+      <ScrollView>
       {clothes.map((c) => (
         <View
           key={c.id}
@@ -85,6 +85,7 @@ const ClothesList = () => {
           <Button title="Delete" onPress={() => deleteClothe(c.id)} />
         </View>
       ))}
+      </ScrollView>
     </View>
   );
 };

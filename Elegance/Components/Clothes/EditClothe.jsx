@@ -3,8 +3,8 @@ import { useState } from "react";
 import { editClothe } from "../../db/clothes/clothes";
 
 const EditClothe = ({ clothe: clotheToEdit, onSave }) => {
-  const [clotheToEditName, setClotheToEditName] = useState(clotheToEdit.name);
-
+  const [clotheToEditPrice, setClotheToEditPrice] = useState(clotheToEdit.price);
+  
   return (
     <View>
       <View
@@ -15,17 +15,17 @@ const EditClothe = ({ clothe: clotheToEdit, onSave }) => {
         }}
       >
         <TextInput
-          onChangeText={setClotheToEditName}
-          defaultValue={clotheToEditName}
+          onChangeText={setClotheToEditPrice}
+          defaultValue={clotheToEditPrice}
           style={{ flex: 2, borderColor: "black", borderWidth: 2 }}
         />
         <Button
           title="Save clothe"
           onPress={() => {
-            editClothe({ ...clotheToEdit, name: clotheToEditName })
+            editClothe({ ...clotheToEdit, price: clotheToEditPrice })
               .then((d) => {
                 onSave();
-                console.log(clotheToEditName);
+                console.log(clotheToEditPrice);
               })
               .catch((e) => console.log(e));
           }}
