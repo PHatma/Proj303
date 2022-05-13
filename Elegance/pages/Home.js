@@ -71,6 +71,8 @@ textStyle:{
   color:'white',
   fontWeight:'bold',
   textAlign: 'center',
+  textAlign: 'center',
+
 },
 });
 
