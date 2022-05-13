@@ -1,8 +1,8 @@
 import {StatusBar} from 'expo-status-bar';
 import {TouchableOpacity, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
 import {useEffect, useState} from 'react';
-import {register, getUserUId} from "../firebase/Auth";
-import {addUser, getUserById} from "../firebase/User";
+import {register, getUserUId} from "../db/auth/auth";
+import {addUser, getUserById} from "../db/User";
 
 const routeName = 'SignUp';
 

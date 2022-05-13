@@ -1,9 +1,10 @@
 import {StatusBar} from 'expo-status-bar';
-import {Button, ScrollView, StyleSheet, Image,ImageBackground ,View,TouchableOpacity, Text, TextInput} from 'react-native';
+import { ScrollView, StyleSheet,View,TouchableOpacity, Text, TextInput} from 'react-native';
 import {useEffect, useState} from 'react';
-import {login, getUserToken} from "../firebase/Auth";
+import {login, getUserToken} from "../db/auth/auth";
 import {AuthContext} from "./Utils";
-
+import Item from "../components/Item"
+import logo2 from "../assets/logo2.png"
 import * as React from "react";
 
 const routeName = 'SignIn';
@@ -26,20 +27,25 @@ export default function SignIn({navigation}) {
             console.log(e.message);
         });
     }
-   
-// const data = [     {text: "", iconScr: logo2},
-//         ];
+const data = [ {text: "", iconScr: logo2},
+        ];
 
     function goToHome() {
         navigation.navigate('Home');
     }
     
-    return (
-     
-       
+    return (   
         <ScrollView style={{padding: 30,
         backgroundColor :`#fdf5e6`, }}>
       
+      <View style={styles.container} >
+      <Image
+        style={{
+         
+          width: "30%", marginHorizontal: "30%",
+        }}/>
+               {data.map((e, index) => (<Item text={e.text} iconScr={e.iconScr} key={index}/>))}
+            </View>
 
             <View  style={styles.inputView}>
                  <TextInput
@@ -77,19 +83,13 @@ export default function SignIn({navigation}) {
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,
-        backgroundColor: '#fff',
+        flex: 5,
+        backgroundColor: `#fdf5e6`,
         alignItems: 'center',
         justifyContent: 'center',
-        image :{
-            marginBottom: 40
-         
-          }
-       },
-     
-      
-         
-    
+        marginBottom: 40,
+        marginHorizontal: "30%",
+     },
        inputView: {
         backgroundColor: "#da70d6",
         borderRadius: 30,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
          alignItems: "center",
         justifyContent:"center",
         marginBottom: 50,
-        marginHorizontal: "30%"
+        marginHorizontal: "35%"
        
         
       },
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         padding: 20,
         alignItems: "center",
         justifyContent:"center", 
-        marginHorizontal: "30%"  
+        marginHorizontal: "35%"  
     },
     
      
@@ -120,6 +120,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 40,
         backgroundColor: "#800080",
-        marginHorizontal: "30%"
+        marginHorizontal: "35%"
       },
 });
