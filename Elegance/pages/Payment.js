@@ -26,6 +26,18 @@ export default function Payment({navigation}) {
 //         })
 //     });
 //     }, []);
+//----------------------------------------------------
+// useEffect(() => {
+//   if (!users?.length) return;
+//   if (!user.buy?.length) return;
+// const arr=[];
+//   const item = user.buy;
+//    item.map((e)=>{
+// arr.push(e)
+//   })
+
+  setitem(arr)
+}, [users,item]);
   useEffect(() => {
     getPaymentList();
   }, []);
