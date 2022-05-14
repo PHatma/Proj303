@@ -1,19 +1,86 @@
 import { View,StyleSheet,FlatList, Button,Text ,Image,Dimensions} from "react-native";
 import { useEffect, useState } from "react";
 import {getClothes,subscribe} from "../db/clothes/clothes";
+import {getUsers,editUser
+  // ,subscribeUser
+} from "../db/User";
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 export default function Home({navigation}) {
-  const getFavList = async () => {
+  const [clothes, setClothes] = useState([]);
+  const [users, setUsers] = useState([]);
+   const [user, setUser] = useState([]);
+
+  const getClotheList = async () => {
     const c = await getClothes();
     setClothes(c);
     console.log("clothes", c);
   };
   useEffect(() => {
-    getFavList();
+    getClotheList();
   }, []);
-  const [clothes, setClothes] = useState([]);
+  
+  useEffect(() => {
+    const unsubscribe = subscribe(({ change, snapshot }) => {
+     
+      if (change.type === "added") {
+        console.log("New clothe: ", change.doc.data());
+        getClotheList();
+      }
+      if (change.type === "modified") {
+        console.log("Modified clothe: ", change.doc.data());
+        getClotheList();
+      }
+      if (change.type === "removed") {
+        console.log("Removed clothe: ", change.doc.data());
+        getClotheList();
+      }
+      // }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []
+  );
+
+  const getUserss = async () => {
+    const arr = await getUsers();
+    setUsers(arr);
+    console.log(user,"user");
+  };
+   
+     useEffect(() => {
+    getUserss();
+  }, []);
+
+  // useEffect(() => {
+  //   const unsubscribe = subscribeUser(({ change, snapshot }) => {
+     
+  //     if (change.type === "added") {
+  //       getUserss();
+  //     }
+  //     if (change.type === "modified") {
+  //       getUserss();
+  //     }
+  //     if (change.type === "removed") {
+  //       getUserss();
+  //     }
+  //   });
+
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, []
+  // );
+  // useEffect(() => {
+  //   if (!users?.length) return;
+  //  const user = users.find((e) => e.email == auth.currentUser.email);
+   
+  //  setUser(user);
+
+  // })
   return (
     <View style={styles.container}> 
     <FlatList
@@ -24,8 +91,8 @@ export default function Home({navigation}) {
         <View style={{ margin: 10 }}> 
           <Image
               style={{
-                width: width / 2.09 -30,
-                height:  height / 1.01,
+                width: width / 2.1 -30,
+                height:  height / 1.3,
                   borderRadius: 10,
                   borderWidth: 1,
                   margin: 5,
@@ -42,11 +109,23 @@ export default function Home({navigation}) {
           <View>
           <Button title="Buy"
             color={`#8a2be2`}
-            onPress={() =>{itemData.item.buy == true}}
+            onPress={() =>{
+              editUser({
+                ...user,
+              buy: [...user.buy,itemData.item.id]
+              })
+              
+            }}
              />
             <Button title="Love" 
             color={`#ff0000`}
-             onPress={() =>{itemData.item.fav == true}}
+            onPress={() =>{
+              editUser({
+                ...user,
+              buy: [...user.fav,itemData.item.id]
+              })
+              
+            }}
            />
             </View>
         </View>

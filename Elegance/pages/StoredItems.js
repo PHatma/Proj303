@@ -1,32 +1,66 @@
 import { View,StyleSheet,FlatList, Button,Text ,Image,Dimensions} from "react-native";
 import { useEffect, useState } from "react";
-import {getClotheId,getClothes,subscribe
+import {getClotheById,getClothes,subscribe
 } from "../db/clothes/clothes";
-
+import {getUsers,editUser
+  // ,subscribeUser
+} from "../db/User";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
 export default function StoredItems({navigation}) {
   const [clothes, setClothes] = useState([]);
-  //const [id, setId] = useState('');
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState([]);
+ //  const [item,setitem]=useState([])
   const getFavList = async () => {
     const c = await getClothes();
     setClothes(c);
     console.log("clothes", c);
   };
-
+//  React.useEffect(() => {
+//     getClotheById().then((id) => {
+//         console.log(id);
+//         getClotheById(id).then((user)=>{
+//            setClothes(user[0].clothes);
+//             setId(user[0].id);
+//         })
+//     });
+//     }, []);
   useEffect(() => {
     getFavList();
   }, []);
-  // React.useEffect(() => {
-  //   getClotheId().then((id) => {
-  //       console.log(id);
-  //       getClotheById(id).then((user)=>{
-  //          setClothes(user[0].clothes);
-  //           setId(user[0].id);
-  //       })
-  //   });
-  //   }, []);
+  useEffect(() => {
+    const unsubscribe = subscribe(({ change, snapshot }) => {
+     
+      if (change.type === "added") {
+        console.log("New clothe: ", change.doc.data());
+        getFavList();
+      }
+      if (change.type === "modified") {
+        console.log("Modified clothe: ", change.doc.data());
+        getFavList();
+      }
+      if (change.type === "removed") {
+        console.log("Removed clothe: ", change.doc.data());
+        getFavList();
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []
+  );
+  const getUserss = async () => {
+    const arr = await getUsers();
+    setUsers(arr);
+    console.log(user,"user");
+  };
+   
+     useEffect(() => {
+    getUserss();
+  }, []);
   return (
     <View style={styles.container}>   
     <FlatList
@@ -37,8 +71,8 @@ export default function StoredItems({navigation}) {
         <View style={styles.container}>
             <Image
                 style={{
-                  width: width / 2.09 -30,
-                  height:  height / 1.01,
+                  width: width / 2.1 -30,
+                  height:  height / 1.5,
                     borderRadius: 10,
                     borderWidth: 1,
                     margin: 5,

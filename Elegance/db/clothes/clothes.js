@@ -12,7 +12,7 @@ async function getClothes() {
   return clotheList;
 }
 export async function getClotheById(id) {
-  const usersRef = collection(firestoreDB, "users");
+  const usersRef = collection(db, "users");
   const q = query(usersRef, where("id", "==", id));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map((doc) => {
