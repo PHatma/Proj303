@@ -35,9 +35,8 @@ export default function Payment({navigation}) {
 //    item.map((e)=>{
 // arr.push(e)
 //   })
-
-  setitem(arr)
-}, [users,item]);
+//   setitem(arr)
+// }, [users,item]);
   useEffect(() => {
     getPaymentList();
   }, []);
