@@ -10,12 +10,18 @@ const Tab = createBottomTabNavigator();
 
 
 import Home from "./pages/Home";
+
  import IntroduceApp from "./pages/IntroduceApp";
  import Profile from "./pages/Profile";
 
+
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+// import Profile from "./pages/Profile";
 import HomeForAdmain from "./pages/HomeForAdmain";
 import Payment from "./pages/Payment";
 import StoredItems from "./pages/StoredItems";
+
 
 export default function App() {
     return (
@@ -25,6 +31,7 @@ export default function App() {
            
              <Tab.Screen name="Payment" component={Payment} />
              <Tab.Screen name="StoredItems" component={StoredItems}/>
+
              <Tab.Screen name="IntroduceApp" component={IntroduceApp}/> 
              <Tab.Screen name="Profile" component={Profile}/> 
 
