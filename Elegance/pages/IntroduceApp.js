@@ -8,36 +8,31 @@ import { useEffect, useState } from "react";
 
 
 export default function IntroduceApp({navigation}) {
-    const data = [
-    {text: "", iconScr: back},
-         {text: "", iconScr: b2},
-         {text: "", iconScr: Blank}
 
-        ];
     return ( 
       
        < ScrollView >
-        <View style={styles.multiButtonContainer}>  
-                    <Button  
+       
+                    
+              
+            <Image source={require('../assets/Back.png')}  style={{ width: 800, height: 500 }} />
+            <Image source={require('../assets/b2.png')}  style={{ width: 800, height: 500 }} />
+            <Image source={require('../assets/Blank.png')}  style={{ width: 800, height: 500 }} />
+            <View style={styles.multiButtonContainer}>  
+            <Button  
                         onPress={() => navigation.navigate('SignUp')}  
                         title="Sign Up"  
-                        color="#000000"
+                        color="#8b0000" 
                         
                         
                     />  
-                    <Button  
+             <Button  
                          onPress={() => navigation.navigate('SignIn')}  
                         title="Sign In"  
-                        color="#000000"  
+                        color="#8b0000"  
                        
-                    />  
-                </View> 
-        
-          <View style={styles.container} >
-                {data.map((e, index) => (<Item text={e.text} iconScr={e.iconScr} key={index}/>))}
-            </View>
-           
-       
+                    /> 
+                      </View> 
          
     <StatusBar style="auto"></StatusBar>
     </ScrollView>
@@ -47,6 +42,7 @@ export default function IntroduceApp({navigation}) {
  const styles = StyleSheet.create({
  
   multiButtonContainer: {  
+    flex:1,
     marginHorizontal: 20,
     marginTop: 5,
     margin: 10,  

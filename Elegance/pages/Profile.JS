@@ -5,7 +5,7 @@ import {getUserUId} from "../db/auth/auth";
 import {getUserById} from "../db/User";
 import {useState} from "react";
 import {isSignedIn, logout} from "../db/auth/auth";
-import {AuthContext} from "./Utils";
+import {AuthContext} from "../pages/Utils";
 
 import * as React from "react";
 
@@ -49,41 +49,46 @@ export default function Profile({navigation}) {
 
     return (
         <ScrollView style={{padding: 30}}>
-             <View style={{padding: 10}}>
-                <Text>fullname</Text>
-                <Text>{fullname}</Text>
-            </View>
-            <View style={{padding: 10}}>
-                <Text>email</Text>
-                <Text>{email}</Text>
-            </View>
-            <View style={{padding: 10}}>
-                <Text>password</Text>
-                <Text>{password}</Text>
+            <View>
+            <Text style={styles.app}>Fullname:</Text>
+            <Text style={styles.app1}>{fullname}</Text>
             </View>
 
-            <View style={{padding: 10}}>
-                <Text>id</Text>
-                <Text>{id}</Text>
+            <View >
+            <Text style={styles.app}>Email:</Text>
+            <Text style={styles.app1}>{email}</Text>
             </View>
-            <View style={{padding: 10}}>
-                <Text>money</Text>
-                <Text>{money}</Text>
+
+            <View >
+            <Text style={styles.app}>Password:</Text>
+            <Text style={styles.app1}>{password}</Text>
+            </View>
+
+            <View >
+            <Text style={styles.app}>Id:</Text>
+            <Text style={styles.app1}>{id}</Text>
+            </View>
+
+            <View >
+            <Text style={styles.app}>Money:</Text>
+            <Text style={styles.app1}>{money}</Text>
             </View>
            
-            <View style={{padding: 10}}>
-                <Text>nationaliynumber</Text>
-                <Text>{nationaliynumber}</Text>
+            <View >
+            <Text style={styles.app}>Nationaliynumber:</Text>
+            <Text style={styles.app1}>{nationaliynumber}</Text>
             </View>
-            <View style={{padding: 10}}>
-                <Text>phonenumber</Text>
-                <Text>{phonenumber}</Text>
+
+            <View >
+            <Text style={styles.app}>Phonenumber:</Text>
+            <Text style={styles.app1}>{phonenumber}</Text>
             </View>
 
 
-            <View style={{padding: 30}}>
-                <Button title='Sign out' onPress={signOutUser}/>
+            <View style={styles.app}>
+                <Button title='Sign out' onPress={signOutUser} color="#000000" />
             </View>
+            <Button  onPress={() => navigation.navigate('HomeForAdmain')}  title="Admin"  color="#000000"  /> 
 
 
             <StatusBar style="auto"/>
@@ -91,4 +96,6 @@ export default function Profile({navigation}) {
     );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    app: { backgroundColor: `#fdf5e6` }
+});
