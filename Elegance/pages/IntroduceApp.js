@@ -1,24 +1,18 @@
 import {StatusBar} from 'expo-status-bar';
-import {Button, ScrollView, StyleSheet, Text, View,Image,ImageBackground} from 'react-native';
+import {Button, ScrollView, StyleSheet, Text, View,Dimensions,Image,ImageBackground} from 'react-native';
 import back from "../assets/back.png"
 import Blank from "../assets/Blank.png"
-import b2 from "../assets/b2.png"
 import Item from "../components/Item"
 import { useEffect, useState } from "react";
 
-
+const width = Dimensions.get("window").width;
+const height = Dimensions.get("window").height;
 export default function IntroduceApp({navigation}) {
 
     return ( 
       
        < ScrollView >
-       
-                    
-              
-            <Image source={require('../assets/Back.png')}  style={{ width: 800, height: 500 }} />
-            <Image source={require('../assets/b2.png')}  style={{ width: 800, height: 500 }} />
-            <Image source={require('../assets/Blank.png')}  style={{ width: 800, height: 500 }} />
-            <View style={styles.multiButtonContainer}>  
+       <View style={styles.multiButtonContainer}>  
             <Button  
                         onPress={() => navigation.navigate('SignUp')}  
                         title="Sign Up"  
@@ -33,7 +27,11 @@ export default function IntroduceApp({navigation}) {
                        
                     /> 
                       </View> 
-         
+                    
+              
+            <Image source={require('../assets/Back.png')}  style={{ width: width, height: height }} />
+            <Image source={require('../assets/Blank.png')}  style={{ width: width, height: height }} />
+            
     <StatusBar style="auto"></StatusBar>
     </ScrollView>
   
@@ -47,7 +45,9 @@ export default function IntroduceApp({navigation}) {
     marginTop: 5,
     margin: 10,  
     flexDirection: 'row'  ,
-    justifyContent: 'space-between'  
+    justifyContent: 'space-between',
+    justifyContent: 'left',
+    alignItems:'left'  
 }  
   
 });

@@ -6,12 +6,9 @@ import {getUserById} from "../db/User";
 import {useState} from "react";
 import {isSignedIn, logout} from "../db/auth/auth";
 import {AuthContext} from "../pages/Utils";
+import HomeForAdmain from "../pages/HomeForAdmain";
 
 import * as React from "react";
-
-const routeName = 'Profile';
-
-export {routeName};
 
 export default function Profile({navigation}) {
 
@@ -88,7 +85,7 @@ export default function Profile({navigation}) {
             <View style={styles.app}>
                 <Button title='Sign out' onPress={signOutUser} color="#000000" />
             </View>
-            <Button  onPress={() => navigation.navigate('HomeForAdmain')}  title="Admin"  color="#000000"  /> 
+            <Button   title="Admin" onPress={() => navigation.navigate('HomeForAdmain')}   color="#000000"  /> 
 
 
             <StatusBar style="auto"/>
