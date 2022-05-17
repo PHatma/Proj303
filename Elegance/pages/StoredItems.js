@@ -122,11 +122,11 @@ export default function StoredItems({navigation}) {
 const styles = StyleSheet.create({
 container: {
   flex:1,
-   backgroundColor :`#000000`,
+  backgroundColor:' #fdf5e6',
 },
 textStyle:{
   fontSize:18,
-  color:'white',
+  color:'black',
   fontWeight:'bold',
   textAlign: 'center',
   margin :10,
@@ -148,7 +148,7 @@ buttonStyle: {
   marginHorizontal: 20,
   marginTop: 5,
    width : 100,
-   height :20,
+   height :50,
 }
 });
 

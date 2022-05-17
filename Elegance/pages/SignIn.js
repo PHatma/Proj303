@@ -1,5 +1,5 @@
 import {StatusBar} from 'expo-status-bar';
-import { ScrollView, StyleSheet,View,TouchableOpacity, Text, TextInput} from 'react-native';
+import { ScrollView, StyleSheet,View,TouchableOpacity, Text,Image, TextInput} from 'react-native';
 import {useEffect, useState} from 'react';
 import {login, getUserToken} from "../db/auth/auth";
 import {AuthContext} from "./Utils";
@@ -36,7 +36,7 @@ const data = [ {text: "", iconScr: logo2},
     
     return (   
         <ScrollView style={{padding: 30,
-        backgroundColor :`#fdf5e6`, }}>
+        backgroundColor :'#fdf5e6', }}>
       
       <View style={styles.container} >
       <Image
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 5,
-        backgroundColor: `#fdf5e6`,
+        backgroundColor:' #fdf5e6',
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 40,

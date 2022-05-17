@@ -1,4 +1,4 @@
-import { View,StyleSheet,FlatList,Image,Dimensions } from "react-native";
+import { View,StyleSheet,FlatList,Image,Dimensions,Button ,Text} from "react-native";
 import { useEffect, useState } from "react";
 import {getClothes,getClotheById,subscribe} from "../db/clothes/clothes";
 import {getUsers,editUser
@@ -11,7 +11,12 @@ export default function Payment({navigation}) {
   const [clothes, setClothes] = useState([]);
   const [users, setUsers] = useState([]);
    const [user, setUser] = useState([]);
-  //  const [item,setitem]=useState([])
+  //  const [item,setitem]=useState([]);
+
+  const [count,setCount]=useState(0);
+   const increase = () => setCount(prevCount =>prevCount + 1)
+   const decrease = () => setCount(prevCount =>prevCount - 1) 
+      
   const getPaymentList = async () => {
     const c = await getClothes();
     setClothes(c);
@@ -80,21 +85,39 @@ export default function Payment({navigation}) {
       numColumns={2}
       keyExtractor={item => item.id}
       renderItem={(itemData) => (
-        <View style={{ margin: 10 }}> 
+        <View style={{ margin: 5 }}> 
             <Image
                 style={{
                   width: width / 2.1 -30,
                   height:  height / 1.3,
                     borderRadius: 10,
                     borderWidth: 1,
-                    margin: 5,
+                    margin: 3,
                     reSizeMode : 'contain'
                 }}
                 source={{
                     uri: `${itemData.item.url}`,
                 }}
             />
-          </View>
+            <View style={styles.btStyleContainer}>
+              <View style={styles.buttonStyle}>
+                <Button title="-"
+              color={`#ff0000`}
+              onPress={decrease}
+               />
+               </View>
+                <View>
+               <Text style={styles.textStyle}>{count}</Text>
+               </View>
+               <View style={styles.buttonStyle}>
+              <Button title="+" 
+              color={`#ff0000`}
+               onPress={increase}
+             />
+              </View>
+              </View>
+          </View> 
+
       )}
     /> 
   </View>
@@ -104,8 +127,28 @@ export default function Payment({navigation}) {
 const styles = StyleSheet.create({
   container: {
       flex: 1,
-     backgroundColor :`#000000`,
+      backgroundColor:' #fdf5e6',
   },
+  btStyleContainer: {
+    flexDirection: 'row',
+    marginHorizontal: 2,
+     marginTop: 1,
+     justifyContent:"center",
+     alignItems:"center"
+   },
+   textStyle:{
+    fontSize:18,
+    color:'black',
+    fontWeight:'bold',
+    // textAlign: 'center',
+    margin :3,
+  },
+   buttonStyle: {
+    marginHorizontal: 5,
+    marginTop: 3,
+     width : 90,
+     height :30,
+  }
   });
   
   

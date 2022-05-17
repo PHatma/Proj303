@@ -1,6 +1,8 @@
 import { View,StyleSheet,FlatList, Button,Text ,Image,Dimensions} from "react-native";
 import { useEffect, useState } from "react";
 import {getClothes,subscribe} from "../db/clothes/clothes";
+
+
 import {getUsers,editUser
   // ,subscribeUser
 } from "../db/User";
@@ -139,11 +141,11 @@ export default function Home({navigation}) {
 const styles = StyleSheet.create({
 container: {
    flex: 1,
-   backgroundColor :`#000000`,
+   backgroundColor:' #fdf5e6',
 },
 textStyle:{
   fontSize:18,
-  color:'white',
+  color:'black',
   fontWeight:'bold',
   textAlign: 'center',
 },
