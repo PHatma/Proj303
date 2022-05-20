@@ -1,7 +1,14 @@
 import { View,StyleSheet,FlatList, Button,Text ,Image,Dimensions} from "react-native";
 import { useEffect, useState } from "react";
 import {getClothes,subscribe} from "../db/clothes/clothes";
+// import {Ionicons} from "react-native-vector-icons";
+// <Icon
+//   name="home" color="#ccc" size={25}
+// />
+import { Platform } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
+// ...
 
 import {getUsers,editUser
   // ,subscribeUser
@@ -94,7 +101,7 @@ export default function Home({navigation}) {
           <Image
               style={{
                 width: width / 2.1 -30,
-                height:  height / 1.3,
+                height:  height / 2.5,
                   borderRadius: 10,
                   borderWidth: 1,
                   margin: 5,
@@ -140,7 +147,8 @@ export default function Home({navigation}) {
 
 const styles = StyleSheet.create({
 container: {
-   flex: 1,
+  flex: 1,
+  flexGrow: 1,
    backgroundColor:' #fdf5e6',
 },
 textStyle:{

@@ -1,3 +1,4 @@
+import {Button, ScrollView, StyleSheet,View} from 'react-native';
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -11,6 +12,7 @@ import IntroduceApp from "./pages/IntroduceApp";
 import Profile from "./pages/Profile";
 import Payment from "./pages/Payment";
 import StoredItems from "./pages/StoredItems";
+import HomeForAdmain from './pages/HomeForAdmain';
 
 import SignIn, {routeName as signInRoute} from "./pages/SignIn";
 import SignUp, {routeName as signUpRoute} from "./pages/SignUp";
@@ -19,6 +21,7 @@ function Menu() {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home}/>
+            <Tab.Screen name="HomeForAdmain" component={HomeForAdmain}/>
             <Tab.Screen name="IntroduceApp" component={IntroduceApp}/>
             <Tab.Screen name="StoredItems" component={StoredItems}/>
             <Tab.Screen name="Payment" component={Payment}/>
@@ -55,3 +58,11 @@ export default function App() {
         </AuthContext.Provider>
     );
 }
+const styles = StyleSheet.create({
+    container: {
+      flexGrow: 1,
+       flex: 1,
+      backgroundColor:' #fdf5e6',
+    },
+    });
+    

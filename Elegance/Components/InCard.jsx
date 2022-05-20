@@ -39,9 +39,8 @@ const styles = StyleSheet.create({
       margin :3,
     },
      buttonStyle: {
-      marginHorizontal: 5,
-      marginTop: 3,
-       width : 90,
-       height :30,
+      marginHorizontal: 3,
+       width : 60,
+       height :20,
     }
     });

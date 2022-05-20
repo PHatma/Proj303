@@ -77,11 +77,11 @@ export default function StoredItems({navigation}) {
       numColumns={2}
       keyExtractor={item => item.id}
       renderItem={(itemData) => (
-        <View style={styles.container}>
+        <View style={{ margin: 10 }}>
             <Image
                 style={{
                   width: width / 2.1 -30,
-                  height:  height / 1.5,
+                  height:  height / 2.5,
                     borderRadius: 10,
                     borderWidth: 1,
                     margin: 5,
@@ -91,27 +91,33 @@ export default function StoredItems({navigation}) {
                     uri: `${itemData.item.url}`,
                 }}
             />
-            <View style={styles.btStyleContainer}>
-            <View>
-           <Text style={styles.textStyle} >{itemData.item.name}</Text>
+         <View style={styles.textStyleContainer}>
+           <Text style={styles.textStyle}>{itemData.item.name}</Text>
           <Text style={styles.textStyle}>{itemData.item.price}</Text>
           </View>
-          <View style={styles.buttonStyleContainer}>
-            <View style={styles.buttonStyle}>
-            <Button title="Buy"
-              color={`#8a2be2`}
-              onPress={() =>{buy == true}}
-               />
-               </View>
-               <View style={styles.buttonStyle}>
-              <Button title=" Not Love" 
-              color={`#ff0000`}
-               onPress={() =>{itemData.item.fav == true}}
+          <View>
+          <Button title="Buy"
+            color={`#8a2be2`}
+            onPress={() =>{
+              editUser({
+                ...user,
+              buy: [...user.buy,itemData.item.id]
+              })
+              
+            }}
              />
-              </View>
-              </View>
-              </View>
-          </View>
+            <Button title="Not Love" 
+            color={`#ff0000`}
+            onPress={() =>{
+              editUser({
+                ...user,
+              buy: [...user.fav,itemData.item.id]
+              })
+              
+            }}
+           />
+            </View>
+        </View>
       )}
     />
    
@@ -121,7 +127,8 @@ export default function StoredItems({navigation}) {
 
 const styles = StyleSheet.create({
 container: {
-  flex:1,
+  flexGrow: 1,
+   flex: 1,
   backgroundColor:' #fdf5e6',
 },
 textStyle:{
@@ -129,26 +136,7 @@ textStyle:{
   color:'black',
   fontWeight:'bold',
   textAlign: 'center',
-  margin :10,
 },
-buttonStyleContainer: {
-  flexDirection: 'row',
-  marginHorizontal: 2,
-   marginTop: 1,
-   justifyContent:"center",
-   alignItems:"center"
- },
- btStyleContainer: {
-  flexDirection: 'colmun',
-    justifyContent:"center",
-   alignItems:"center",
-   margin :10,
- },
-buttonStyle: {
-  marginHorizontal: 20,
-  marginTop: 5,
-   width : 100,
-   height :50,
-}
+
 });
 

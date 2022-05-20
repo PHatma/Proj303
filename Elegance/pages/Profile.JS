@@ -94,5 +94,9 @@ export default function Profile({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    app: { backgroundColor: `#fdf5e6` }
+    app: {
+         backgroundColor: `#fdf5e6`,
+         flexGrow: 1,
+         flex: 1,
+         }
 });

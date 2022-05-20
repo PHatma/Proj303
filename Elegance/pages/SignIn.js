@@ -83,7 +83,8 @@ const data = [ {text: "", iconScr: logo2},
 const styles = StyleSheet.create({
 
     container: {
-        flex: 5,
+      flexGrow: 1,
+        flex: 1,
         backgroundColor:' #fdf5e6',
         alignItems: 'center',
         justifyContent: 'center',

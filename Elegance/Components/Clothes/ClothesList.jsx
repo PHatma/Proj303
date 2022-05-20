@@ -45,6 +45,7 @@ const ClothesList = () => {
   return clotheToEdit ? (
     <EditClothe clothe={clotheToEdit} onSave={()=>setClotheToEdit(undefined)} />
   ) : (
+    <ScrollView>
     <View>
       <View
         style={{
@@ -64,7 +65,6 @@ const ClothesList = () => {
           }
         />
       </View>
-      <ScrollView>
       {clothes.map((c) => (
         <View
           key={c.id}
@@ -85,8 +85,8 @@ const ClothesList = () => {
           <Button title="Delete" onPress={() => deleteClothe(c.id)} />
         </View>
       ))}
-      </ScrollView>
     </View>
+    </ScrollView>
   );
 };
 

@@ -40,7 +40,8 @@ export default function IntroduceApp({navigation}) {
  const styles = StyleSheet.create({
  
   multiButtonContainer: {  
-    flex:1,
+    flexGrow: 1,
+    flex: 1,
     marginHorizontal: 20,
     marginTop: 5,
     margin: 10,  

@@ -86,7 +86,7 @@ export default function Payment({navigation}) {
             <Image
                 style={{
                   width: width / 2.1 -30,
-                  height:  height / 1.3,
+                  height:  height / 1.5,
                     borderRadius: 10,
                     borderWidth: 1,
                     margin: 3,
@@ -108,6 +108,7 @@ export default function Payment({navigation}) {
 
 const styles = StyleSheet.create({
   container: {
+    flexGrow: 1,
       flex: 1,
       backgroundColor:' #fdf5e6',
   },
