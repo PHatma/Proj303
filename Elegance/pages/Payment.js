@@ -4,6 +4,7 @@ import {getClothes,getClotheById,subscribe} from "../db/clothes/clothes";
 import {getUsers,editUser
   // ,subscribeUser
 } from "../db/User";
+import InCard from "../Components/InCard";
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
 
@@ -11,12 +12,8 @@ export default function Payment({navigation}) {
   const [clothes, setClothes] = useState([]);
   const [users, setUsers] = useState([]);
    const [user, setUser] = useState([]);
-  //  const [item,setitem]=useState([]);
+  //  let temp =useState([]);
 
-  const [count,setCount]=useState(0);
-   const increase = () => setCount(prevCount =>prevCount + 1)
-   const decrease = () => setCount(prevCount =>prevCount - 1) 
-      
   const getPaymentList = async () => {
     const c = await getClothes();
     setClothes(c);
@@ -99,25 +96,10 @@ export default function Payment({navigation}) {
                     uri: `${itemData.item.url}`,
                 }}
             />
-            <View style={styles.btStyleContainer}>
-              <View style={styles.buttonStyle}>
-                <Button title="-"
-              color={`#ff0000`}
-              onPress={decrease}
-               />
-               </View>
-                <View>
-               <Text style={styles.textStyle}>{count}</Text>
-               </View>
-               <View style={styles.buttonStyle}>
-              <Button title="+" 
-              color={`#ff0000`}
-               onPress={increase}
-             />
-              </View>
-              </View>
+             <View> 
+           <InCard /> 
+           </View>   
           </View> 
-
       )}
     /> 
   </View>
@@ -129,26 +111,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor:' #fdf5e6',
   },
-  btStyleContainer: {
-    flexDirection: 'row',
-    marginHorizontal: 2,
-     marginTop: 1,
-     justifyContent:"center",
-     alignItems:"center"
-   },
-   textStyle:{
-    fontSize:18,
-    color:'black',
-    fontWeight:'bold',
-    // textAlign: 'center',
-    margin :3,
-  },
-   buttonStyle: {
-    marginHorizontal: 5,
-    marginTop: 3,
-     width : 90,
-     height :30,
-  }
   });
   
   
