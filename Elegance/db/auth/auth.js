@@ -3,13 +3,13 @@ import {onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPa
 
 const authentication = getAuth(app);
 
-// onAuthStateChanged(authentication, (user) => {
-//     if (user != null) {
-//         console.log("authorized user: ", user);
-//         console.log(authentication.currentUser)
-//     }
-//     console.log('isSignedIn=', isSignedIn())
-// });
+onAuthStateChanged(authentication, (user) => {
+    if (user != null) {
+        console.log("authorized user: ", user);
+        console.log(authentication.currentUser)
+    }
+    console.log('isSignedIn=', isSignedIn())
+});
 
 async function isSignedIn() {
     console.log('from isSignedIn method: ', authentication.currentUser);

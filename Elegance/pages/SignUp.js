@@ -36,68 +36,61 @@ export default function SignUp({navigation}) {
     }
 
     return (
-        <ScrollView style={{padding: 30, backgroundColor :`#fdf5e6`}}>
-   <View style={styles.inputView}>
+        <ScrollView style={{padding: 30, backgroundColor :`#ffffff`}}>
+   <View >
                 <TextInput 
                 style={styles.TextInput}
                 placeholder={"Enter your Name "}
-                placeholderTextColor="#003f5c"onChangeText={setName} value={fullname}/>
+                placeholderstyle={styles.TextInput} onChangeText={setName} value={fullname}/>
             </View>
-            <View style={styles.inputView}>
+            <View>
                 <TextInput 
                 style={styles.TextInput}
                 placeholder="Enter your Nationality Number"
-                placeholderTextColor="#003f5c"  onChangeText={setNationalityNum} value={nationaliynumber}/>
+                placeholderstyle={styles.TextInput}  onChangeText={setNationalityNum} value={nationaliynumber}/>
             </View>
-<View  style={styles.inputView}>
+<View  >
                  <TextInput
                     style={styles.TextInput}
                     placeholder=" Enter Your Email "
-                    placeholderTextColor="#003f5c"  onChangeText={setEmail} value={email}/>
+                    placeholderstyle={styles.TextInput}  onChangeText={setEmail} value={email}/>
             </View>
 
            
 
           
-            <View  style={styles.inputView}>
+            <View>
   <TextInput
     style={styles.TextInput}
     placeholder="Enter Your Password "
-    placeholderTextColor="#003f5c" secureTextEntry={true} onChangeText={setPassword}
+    placeholderstyle={styles.TextInput} secureTextEntry={true} onChangeText={setPassword}
                            value={password}/>
             </View>
 
           
-            <View style={styles.inputView}>
+            <View >
                 <TextInput 
                 style={styles.TextInput}
                 placeholder="Confirm Password"
-                placeholderTextColor="#003f5c"/>
+                placeholderstyle={styles.TextInput}/>
             </View>
 
-            <View style={styles.inputView}>
+            <View>
                 <TextInput 
                 style={styles.TextInput}
                 placeholder="Phone Number"
-                placeholderTextColor="#003f5c" onChangeText={setphonenumber} value={phonenumber}/>
+                placeholderstyle={styles.TextInput} onChangeText={setphonenumber} value={phonenumber}/>
             </View>
-            <View style={styles.inputView}>
-                <TextInput 
-                style={styles.TextInput}
-                placeholder="Money"
-                placeholderTextColor="#003f5c"
-                 onChangeText={setmoney} value={money}
-                />
-            </View>
+           
             <View style={styles.inputView}>
                 <TextInput 
                 style={styles.TextInput}
                 placeholder="Address"
-                placeholderTextColor="#003f5c"
+                placeholderstyle={styles.TextInput}
                  onChangeText={setAddress} value={address}
                 />
             </View>
-            <TouchableOpacity style={styles.loginBtn}
+            <TouchableOpacity
                    onPress={registerUser}>
         <Text style={styles.loginText}>Create Account</Text>
         
@@ -113,50 +106,44 @@ const styles = StyleSheet.create({
 
     container: {
         flexGrow: 1,
-         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        image :{
-            marginBottom: 40
-         
-          }
-       },
-     
+          flex: 1,
+          backgroundColor:' #fdf5e6',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: 40,
+          marginHorizontal: "30%",},
+  
+          TextInput: {
+            flex:1,
+            backgroundColor:`#b22222`,
+            width: "40%", 
+            height: 45,
+            marginHorizontal: "30%",
+            placeholderTextColor:`#fffacd`,
+            paddingVertical: 10, 
+            paddingHorizontal: 15, 
+            marginBottom: 20,
+             borderWidth: 1,
+              borderRadius: 25, 
+            fontSize: 16,
+            
+           
+          },
       
-         
-    
-       inputView: {
-        backgroundColor: "#da70d6",
-        borderRadius: 40,
-        width: "30%",
-        height: 50,
-         alignItems: "center",
-        justifyContent:"center",
-        marginBottom: 50,
-        marginHorizontal: "30%"
-       
+        loginText:{
+          flex:1,
+          color:`#fffacd`,
+          backgroundColor:`#b22222`,
+          width: "40%", 
+          height: 50,
+          marginHorizontal: "30%",
         
-      },
-      
-      TextInput: {
-        height: 50,
-        padding: 10,
-        alignItems: "center",
-        justifyContent:"center", 
-        marginHorizontal: "30%"  
-    },
-    
-     
-      loginBtn: {
-        width: "30%",
-        borderRadius: 50,
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 40,
-        backgroundColor: "#800080",
-        marginHorizontal: "30%"
-      },
+          paddingVertical: 10, 
+          paddingHorizontal: 15, 
+          marginBottom: 20,
+           borderWidth: 1,
+            borderRadius: 25, 
+          fontSize:16,
+        }
 }
 );

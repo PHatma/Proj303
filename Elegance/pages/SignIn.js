@@ -6,6 +6,7 @@ import {AuthContext} from "./Utils";
 import Item from "../components/Item"
 import logo2 from "../assets/logo2.png"
 import * as React from "react";
+import { CurrentRenderContext } from '@react-navigation/native';
 
 const routeName = 'SignIn';
 
@@ -36,7 +37,7 @@ const data = [ {text: "", iconScr: logo2},
     
     return (   
         <ScrollView style={{padding: 30,
-        backgroundColor :'#fdf5e6', }}>
+        backgroundColor :`#ffffff`, }}>
       
       <View style={styles.container} >
       <Image
@@ -47,29 +48,29 @@ const data = [ {text: "", iconScr: logo2},
                {data.map((e, index) => (<Item text={e.text} iconScr={e.iconScr} key={index}/>))}
             </View>
 
-            <View  style={styles.inputView}>
+            <View >
                  <TextInput
                     style={styles.TextInput}
                     placeholder=" Email "
-                    placeholderTextColor="#003f5c" onChangeText={setEmail} value={email}/>
+                    placeholderstyle={styles.TextInput} onChangeText={setEmail} value={email}/>
             </View>
 
-            <View  style={styles.inputView}>
+            <View>
   <TextInput
     style={styles.TextInput}
     placeholder=" Password "
-    placeholderTextColor="#003f5c"
+    placeholderstyle={styles.TextInput}
     secureTextEntry={true} onChangeText={setPassword}
                            value={password}/>
             </View>
            
-      <TouchableOpacity style={styles.loginBtn}
+      <TouchableOpacity 
       onPress={signInUser}>
         <Text style={styles.loginText}>Sign In</Text>
         
       </TouchableOpacity>
           
-      <TouchableOpacity style={styles.loginBtn}
+      <TouchableOpacity 
       onPress={() => navigation.navigate('SignUp')}>
         <Text style={styles.loginText}>Create new account</Text>
         
@@ -89,38 +90,39 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 40,
-        marginHorizontal: "30%",
-     },
-       inputView: {
-        backgroundColor: "#da70d6",
-        borderRadius: 30,
-        width: "30%",
-        height: 50,
-         alignItems: "center",
-        justifyContent:"center",
-        marginBottom: 50,
-        marginHorizontal: "35%"
-       
-        
-      },
+        marginHorizontal: "30%",},
+
       
-      TextInput: {
-        height: 50,
-        padding: 20,
-        alignItems: "center",
-        justifyContent:"center", 
-        marginHorizontal: "35%"  
-    },
+        TextInput: {
+          flex:1,
+          backgroundColor:`#b22222`,
+          width: "30%", 
+          height: 45,
+          marginHorizontal: "35%",
+          placeholderTextColor:`#fffacd`,
+          paddingVertical: 10, 
+          paddingHorizontal: 15, 
+          marginBottom: 20,
+           borderWidth: 1,
+            borderRadius: 25, 
+          fontSize: 16,
+          
+         
+        },
     
-     
-      loginBtn: {
-        width: "30%",
-        borderRadius: 50,
+      loginText:{
+        flex:1,
+        color:`#fffacd`,
+        backgroundColor:`#b22222`,
+        width: "30%", 
         height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 40,
-        backgroundColor: "#800080",
-        marginHorizontal: "35%"
-      },
+        marginHorizontal: "35%",
+      
+        paddingVertical: 10, 
+        paddingHorizontal: 15, 
+        marginBottom: 20,
+         borderWidth: 1,
+          borderRadius: 25, 
+        fontSize:16,
+      }
 });
