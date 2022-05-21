@@ -1,4 +1,4 @@
-import { View, Text, Button, TextInput ,ScrollView} from "react-native";
+import { View, Text, Button, TextInput ,ScrollView,StyleSheet} from "react-native";
 import { useEffect, useState } from "react";
 import {getClothes,addClothe,deleteClothe,subscribe
 } from "../../db/clothes/clothes";
@@ -39,7 +39,10 @@ const ClothesList = () => {
   }, []);
 
   const [clothes, setClothes] = useState([]);
+  const [clotheId, setClotheId] = useState();
   const [clotheName, setClotheName] = useState("");
+  const [clothePrice, setClothePrice] = useState("");
+  const [clotheUrl, setClotheUrl] = useState("");
   const [clotheToEdit, setClotheToEdit] = useState(undefined);
 
   return clotheToEdit ? (
@@ -47,21 +50,41 @@ const ClothesList = () => {
   ) : (
     <ScrollView>
     <View>
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          padding: 2,
-        }}
-      >
+      <View>
+      <TextInput
+      placeholder=" Id"
+       onChangeText={setClotheId}
+       style={{ 
+          borderColor: "black", borderWidth: 2 }}
+     />
         <TextInput
+         placeholder=" Name "
           onChangeText={setClotheName}
-          style={{ flex: 2, borderColor: "black", borderWidth: 2 }}
+          style={{ 
+            // flex: 2,
+             borderColor: "black", borderWidth: 2 }}
         />
+        <TextInput
+      placeholder=" Price"
+       onChangeText={setClothePrice}
+       style={{ 
+          borderColor: "black", borderWidth: 2 }}
+     />
+       <TextInput
+      placeholder=" Url of image "
+       onChangeText={setClotheUrl}
+       style={{ 
+          borderColor: "black", borderWidth: 2 }}
+     />
         <Button
           title="Add clothe"
+          color={`#8a2be2`}
           onPress={() =>
-            addClothe({ name: clotheName || "new clothe" + clothes.length })
+            addClothe({ name: clotheName &&{
+              id: clotheId }}
+              &&{ price: clothePrice }
+              &&{ url: clotheUrl || "new clothe" + clothes.length}
+              )
           }
         />
       </View>
@@ -74,20 +97,30 @@ const ClothesList = () => {
             padding: 2,
           }}
         >
-          <Text
-            onPress={() => {
-              setClotheToEdit(c);
-              console.log('clotheToEdit', c);
-            }}
-          >
-            {c.name}
+           <View >
+           <Text style={styles.textStyle}>
+           Id: {c.id}
           </Text>
-          <Button title="Delete" onPress={() => deleteClothe(c.id)} />
+          <Text style={styles.textStyle} >
+           Name:  {c.name}
+          </Text>
+          </View>
+          <View>
+         <Button title="Update" color={`#ff0000`}  onPress={() =>setClotheToEdit(c)} />
+          <Button title="Delete" color={`#8a2be2`} onPress={() => deleteClothe(c.id)} />
+          </View>
         </View>
+
       ))}
     </View>
     </ScrollView>
   );
 };
-
+const styles = StyleSheet.create({
+  textStyle:{
+    fontSize:18,
+    color:'black',
+    fontWeight:'bold',
+  },
+  });
 export default ClothesList;

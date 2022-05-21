@@ -12,7 +12,7 @@ import IntroduceApp from "./pages/IntroduceApp";
 import Profile from "./pages/Profile";
 import Payment from "./pages/Payment";
 import StoredItems from "./pages/StoredItems";
-
+import HomeForAdmain from "./pages/HomeForAdmain";
 
 import SignIn, {routeName as signInRoute} from "./pages/SignIn";
 import SignUp, {routeName as signUpRoute} from "./pages/SignUp";
@@ -21,6 +21,7 @@ function Menu() {
     return (
         <Tab.Navigator>
             <Tab.Screen name="Home" component={Home}/>
+            <Tab.Screen name="HomeForAdmain" component={HomeForAdmain}/>
             <Tab.Screen name="IntroduceApp" component={IntroduceApp}/>
             <Tab.Screen name="StoredItems" component={StoredItems}/>
             <Tab.Screen name="Payment" component={Payment}/>
