@@ -11,8 +11,8 @@ async function getClothes() {
   });
   return clotheList;
 }
-export async function getClotheById(id) {
-  const usersRef = collection(db, "users");
+ async function getClotheById(id) {
+  const clothesCol = collection(db, "clothes");
   const q = query(usersRef, where("id", "==", id));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map((doc) => {
@@ -57,4 +57,4 @@ function subscribe(callback) {
   return unsubscribe;
 }
 
-export { getClothes, addClothe, editClothe, deleteClothe, subscribe };
+export { getClothes, addClothe, editClothe, deleteClothe, subscribe,getClotheById };

@@ -1,14 +1,6 @@
 import { View,StyleSheet,FlatList, Button,Text ,Image,Dimensions} from "react-native";
 import { useEffect, useState } from "react";
 import {getClothes,subscribe} from "../db/clothes/clothes";
-// import {Ionicons} from "react-native-vector-icons";
-// <Icon
-//   name="home" color="#ccc" size={25}
-// />
-import { Platform } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
-
-// ...
 
 import {getUsers,editUser
   // ,subscribeUser
@@ -121,7 +113,7 @@ export default function Home({navigation}) {
             onPress={() =>{
               editUser({
                 ...user,
-              buy: [...user.buy,itemData.item.id]
+              buy: [...user.buy,itemData.item.url]
               })
               
             }}
@@ -131,7 +123,7 @@ export default function Home({navigation}) {
             onPress={() =>{
               editUser({
                 ...user,
-              buy: [...user.fav,itemData.item.id]
+              buy: [...user.fav,itemData.item.url]
               })
               
             }}
