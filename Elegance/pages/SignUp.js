@@ -12,21 +12,21 @@ export default function SignUp({navigation}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [money, setmoney] = useState('');
+   
     const [phonenumber, setphonenumber] = useState('');
     const [nationaliynumber,setNationalityNum] = useState('');
     const [fullname,setName] = useState('');
     const [address,setAddress] = useState('');
     function registerUser() {
-        if (email === '' || password === ''|| phonenumber===''||money===''||nationaliynumber===''||fullname===''||address==='') {
+        if (email === '' || password === ''|| phonenumber===''||nationaliynumber===''||fullname===''||address==='') {
             alert("email or password is empty!");
         } else {
-            register(email, password ,money, phonenumber,nationaliynumber,fullname,address).then(() => {
+            register(email, password , phonenumber,nationaliynumber,fullname,address).then(() => {
                 console.log(getUserUId());
 
                 getUserUId().then((id) => {
                     // console.log(id);
-                    addUser({id: id, email,money, password,phonenumber,nationaliynumber,fullname,address});
+                    addUser({id: id, email, password,phonenumber,nationaliynumber,fullname,address});
                 });
                 navigation.navigate('SignIn');
             }).catch((e) => {
