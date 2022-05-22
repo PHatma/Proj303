@@ -24,3 +24,12 @@ email : lolyol@gmail.com
  وهى الصفح التى تعرض العناصر التى خزنتها فى الارى عن طريق الفاير بيز بنفسى
  7-   user البروفايل تعرض الداتا 
  (HomeForAdmain) التى من خلالها يتم الوصول لصفحة settingوبداخلها ال 
+
+ Note:
+ علشان النفيجشن بتاعت الصفح 
+ Sign in , sign up , introduceApp
+ ومستخدمين النفيكشن الداخلية 
+ فمش عملت
+ authentication for clothes schema
+ وكده الهوم بيظهر بدون تسجيل دخول
+ 
