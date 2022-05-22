@@ -21,8 +21,8 @@ import SignUp, {routeName as signUpRoute} from "./pages/SignUp";
 function Elegance() {
     return (
         <Tab.Navigator>
-            <Tab.Screen name="Home" component={Home}/>
             <Tab.Screen name="IntroduceApp" component={IntroduceApp}/>
+            <Tab.Screen name="Home" component={Home}/>
             <Tab.Screen name="StoredItems" component={StoredItems}/>
             <Tab.Screen name="Payment" component={Payment}/>
             <Tab.Screen name="Profile" component={Profile}/>
