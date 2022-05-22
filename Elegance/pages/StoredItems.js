@@ -78,6 +78,8 @@ container: {
   flexGrow: 1,
    flex: 1,
   backgroundColor:' #fdf5e6',
+  justifyContent: 'center',
+    alignItems:'center'
 },
 
 });

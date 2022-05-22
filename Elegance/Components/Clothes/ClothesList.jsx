@@ -76,14 +76,12 @@ const ClothesList = () => {
        style={{ 
           borderColor: "black", borderWidth: 2 }}
      />
-        <Button
+       <Button
           title="Add clothe"
           color={`#8a2be2`}
           onPress={() =>
-            addClothe({ name: clotheName &&{
-              id: clotheId }}
-              &&{ price: clothePrice }
-              &&{ url: clotheUrl || "new clothe" + clothes.length}
+            addClothe({ name: clotheName , id: clotheId ,price: clothePrice ,
+              url: clotheUrl || "new clothe" + clothes.length}
               )
           }
         />

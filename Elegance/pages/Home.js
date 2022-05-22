@@ -142,6 +142,8 @@ container: {
   flex: 1,
   flexGrow: 1,
    backgroundColor:' #fdf5e6',
+   justifyContent: 'center',
+    alignItems:'center' 
 },
 textStyle:{
   fontSize:18,

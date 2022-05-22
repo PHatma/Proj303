@@ -41,7 +41,7 @@ const EditClothe = ({ clothe: clotheToEdit, onSave }) => {
           onPress={() => {
             editClothe({ ...clotheToEdit, name: clotheToEditName 
               ,id: clotheToEditId , price: clotheToEditPrice ,
-              url: clotheToEditUrl , })
+              url: clotheToEditUrl })
               .then((d) => {
                 onSave();
                 console.log(clotheToEditId);
