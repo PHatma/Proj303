@@ -32,8 +32,8 @@ export default function StoredItems({navigation}) {
         <View style={{ margin: 10 }}>
             <Image
                 style={{
-                  width: width / 2.1 -30,
-                  height:  height / 2.5,
+                  width: width / 2.3 -30,
+                  height:  height / 2,
                     borderRadius: 10,
                     borderWidth: 1,
                     margin: 5,

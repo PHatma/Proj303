@@ -39,17 +39,12 @@ const EditClothe = ({ clothe: clotheToEdit, onSave }) => {
           title="Save clothe"
           color={`#8a2be2`}
           onPress={() => {
-            editClothe({ ...clotheToEdit, name: clotheToEditName 
+            editClothe({ 
+            ...clotheToEdit,
+               name: clotheToEditName 
               ,id: clotheToEditId , price: clotheToEditPrice ,
-              url: clotheToEditUrl })
-              .then((d) => {
-                onSave();
-                console.log(clotheToEditId);
-                console.log(clotheToEditName);
-                console.log(clotheToEditPrice);
-                console.log(clotheToEditUrl);
-              })
-              .catch((e) => console.log(e));
+              url: clotheToEditUrl } , onSave())
+               .catch((e) => console.log(e));
           }}
         />
       </View>
